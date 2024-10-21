@@ -1,0 +1,39 @@
+class Produk(
+    val nama: String,
+    var harga: Double,
+    var stok: Int,
+    val kategori: String,
+    val berat: Double,
+    val deskripsi: String
+) {
+    fun tampilkanInformasi() {
+        println("Nama Produk: $nama")
+        println("Harga: Rp $harga")
+        println("Stok: $stok")
+        println("Kategori: $kategori")
+        println("Berat: ${berat}g")
+        println("Deskripsi: $deskripsi")
+    }
+
+    fun beliProduk(jumlah: Int) {
+        if (stok >= jumlah) {
+            stok -= jumlah
+            println("$jumlah produk $nama telah dibeli.")
+            println("Sisa stok: $stok")
+        } else {
+            println("Stok tidak mencukupi!")
+        }
+    }
+}
+
+fun main() {
+    // Membuat objek produk
+    val produk1 = Produk("Laptop", 12000000.0, 5, "Elektronik", 1500.0, "Laptop gaming high-end")
+    
+    // Menampilkan informasi produk
+    produk1.tampilkanInformasi()
+    
+    // Simulasi pembelian produk
+    produk1.beliProduk(2)  // Membeli 2 produk
+    produk1.beliProduk(4)  // Coba beli 4 produk (stok tidak cukup)
+}
